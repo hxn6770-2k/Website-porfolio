@@ -129,6 +129,16 @@ If you have any questions or would like to connect, feel free to reach out:
 - **LinkedIn:** [Vivian Nguyen](https://www.linkedin.com/in/viviannguyen726/)
 - **GitHub:** [hxn6770-2k](https://github.com/hxn6770-2k)
 
+## Acknowledgements
+
+This website was built using the [iPortfolio](https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/) template by [BootstrapMade.com](https://bootstrapmade.com/). The template was customized to fit my personal portfolio needs.
+
+### Template License
+
+The iPortfolio template is provided by BootstrapMade under the [BootstrapMade License](https://bootstrapmade.com/license/). 
+
+For more details on the licensing terms, please refer to the [license agreement](https://bootstrapmade.com/license/) provided by BootstrapMade.
+
 ---
 
 Thank you for visiting my ePortfolio. I look forward to connecting with you!
