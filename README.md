@@ -2,6 +2,10 @@
 
 This repository contains the codebase for my personal ePortfolio website, which serves as a digital showcase of my professional experience, technical skills, and personal projects. The ePortfolio is designed to provide potential employers, collaborators, and peers with an overview of my work and capabilities in software development and engineering.
 
+**Live Site:** [Vivian Nguyen - ePortfolio](https://hxn6770-2k.github.io/Website-porfolio/)
+
+**GitHub Repository:** [Website-porfolio](https://github.com/hxn6770-2k/Website-porfolio/)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -51,13 +55,13 @@ To run this project locally, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/hxn6770-2k/vivian-nguyen-eportfolio.git
+    git clone https://github.com/hxn6770-2k/Website-porfolio.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd vivian-nguyen-eportfolio
+    cd Website-porfolio
     ```
 
 3. **Open `index.html` in your preferred browser:**
@@ -88,7 +92,7 @@ Contributions are welcome and appreciated. Please follow these steps to contribu
 2. **Clone your forked repository:**
 
     ```bash
-    git clone https://github.com/your-username/vivian-nguyen-eportfolio.git
+    git clone https://github.com/your-username/Website-porfolio.git
     ```
 
 3. **Create a new branch for your feature or bugfix:**
