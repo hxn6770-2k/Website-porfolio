@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <title>K-Means Clustering Implementation - ePortfolio</title>
+    <meta content="K-Means Clustering Implementation showcases the application of machine learning algorithms, specifically focusing on unsupervised learning techniques." name="description">
+    <meta content="ePortfolio, K-Means, Machine Learning" name="keywords">
+    
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="d-flex flex-column">
+            <div class="profile">
+                <img src="assets/img/profile-img-2.jpg" alt="Profile Picture" class="img-fluid rounded-circle">
+                <h1 class="text-light"><a href="index.html">Vivian Nguyen</a></h1>
+                <div class="social-links mt-3 text-center">
+                    <a href="https://github.com/hxn6770-2k" class="Github"><i class="bx bxl-github bx-tada-hover"></i></a>
+                    <a href="https://www.linkedin.com/in/viviannguyen726/" class="Linkedin"><i class="bx bxl-linkedin bx-tada-hover"></i></a>
+                </div>
+            </div>
+            <nav id="navbar" class="nav-menu navbar">
+                <ul>
+                    <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+                    <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+                    <li><a href="#education" class="nav-link scrollto"><i class="bx bx-book-reader"></i> <span>Education</span></a></li>
+                    <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-edit-alt"></i> <span>Skills</span></a></li>
+                    <li><a href="#experience" class="nav-link scrollto"><i class="bx bx-briefcase-alt"></i> <span>Experience</span></a></li>
+                    <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+                    <li><a href="#kmeans" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>K-Means Clustering</span></a></li>
+                    <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>K-Means Clustering Implementation</h2>
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li>K-Means Clustering Implementation</li>
+                    </ol>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- ======= K-Means Clustering Section ======= -->
+        <section id="kmeans" class="kmeans">
+            <div class="container">
+
+                <div class="narrative mt-5">
+                    <h3><strong>Enhancement Narrative: K-Means Clustering Implementation</strong></h3>
+
+                    <h4><strong>I. Brief Description of the Artifact</strong></h4>
+                    <p>
+                        The artifact I have worked on is a K-means clustering implementation, originally created to demonstrate my understanding of machine learning algorithms, with a focus on unsupervised learning techniques. In its initial form, the artifact used the basic K-means algorithm, which involved random initialization of centroids and lacked a systematic approach to select the optimal number of clusters. This resulted in inefficiencies such as poor convergence and suboptimal clustering outcomes.
+                    </p>
+
+                    <h4><strong>II. Justification for Inclusion</strong></h4>
+                    <p>
+                        I selected this artifact for my ePortfolio because it highlights my ability to apply machine learning algorithms, specifically clustering techniques, to solve real-world data analysis problems. It also demonstrates my understanding of algorithm design, data science, and evaluation techniques. By enhancing the artifact with improved centroid initialization and cluster evaluation methods, I showcase not only my ability to implement computing solutions but also my problem-solving skills in optimizing algorithmic performance.
+                    </p>
+                    <ul>
+                        <li><strong>Key Components:</strong></li>
+                        <li>The K-means++ initialization showcases my proficiency in improving the algorithm’s convergence.</li>
+                        <li>The elbow method and silhouette analysis highlight my skills in selecting and evaluating optimal cluster counts, enhancing the interpretability of results.</li>
+                        <li>These enhancements reflect my expertise in data analysis, optimization of machine learning models, and algorithmic problem-solving.</li>
+                    </ul>
+
+                    <h4><strong>III. How the Artifact Was Improved</strong></h4>
+                    <p>
+                        To address the limitations of the original implementation, I made several key enhancements to improve the clustering process's effectiveness and efficiency.
+                    </p>
+                    <ol>
+                        <li><strong>K-means++ Initialization:</strong>
+                            <ul>
+                                <li>I replaced the random initialization of centroids with the K-means++ initialization method. This strategic selection of initial cluster centers reduces the likelihood of poor clustering results and improves algorithm convergence. As a result, the updated artifact now produces more accurate and consistent clusters.</li>
+                                <li>This modification highlights my ability to make algorithmic design decisions that balance the trade-off between computational complexity and clustering performance.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Elbow Method for Optimal Cluster Selection:</strong>
+                            <ul>
+                                <li>I introduced the elbow method to systematically determine the optimal number of clusters (k). The elbow method calculates the within-cluster sum of squares (WCSS) for a range of k values, identifying the point where adding more clusters no longer significantly improves model performance.</li>
+                                <li>This enhancement prevents both overfitting and underfitting, leading to more accurate clustering and effective modeling. It showcases my ability to implement data-driven approaches to enhance the algorithm’s effectiveness.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Silhouette Analysis for Cluster Evaluation:</strong>
+                            <ul>
+                                <li>I integrated silhouette analysis to evaluate the quality of the clusters. Silhouette values provide insights into how well each data point fits within its assigned cluster, compared to neighboring clusters. This helps assess cohesion and separation, improving the interpretability of the clustering outcomes.</li>
+                                <li>This addition demonstrates my ability to use innovative tools to assess and optimize the clustering algorithm's performance, ensuring that it aligns with both computational principles and user needs.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4><strong>IV. Meeting the Course Outcomes</strong></h4>
+                    <p>
+                        These enhancements allowed me to successfully align the artifact with several course outcomes:
+                    </p>
+                    <ol>
+                        <li><strong>Collaboration and Improvement of Algorithms:</strong>
+                            <p>The implementation of K-means++ initialization and silhouette analysis demonstrates my ability to improve machine learning algorithms by incorporating advanced techniques. These improvements reflect collaboration with best practices in the data science community.</p>
+                        </li>
+                        <li><strong>Clear Presentation of Technical Concepts:</strong>
+                            <p>By refining the artifact’s code structure and enhancing documentation, I presented the technical aspects of K-means clustering, K-means++, and evaluation metrics in a clear and structured manner.</p>
+                        </li>
+                        <li><strong>Application of Algorithmic Principles:</strong>
+                            <p>The use of K-means++, elbow method, and silhouette analysis to address clustering issues demonstrates my proficiency in applying algorithmic principles to real-world problems. These techniques ensure the artifact efficiently handles large datasets and delivers optimal clustering results.</p>
+                        </li>
+                        <li><strong>Use of Advanced Tools:</strong>
+                            <p>The integration of tools like the K-means++ algorithm and silhouette analysis highlights my ability to leverage advanced methods in machine learning to enhance the artifact’s performance and accuracy.</p>
+                        </li>
+                    </ol>
+
+                    <h4><strong>V. Reflection on the Process</strong></h4>
+                    <p>
+                        The process of enhancing this artifact was both insightful and challenging. I gained a deeper understanding of the trade-offs involved in algorithmic design, particularly when balancing computation time with accuracy. For instance, K-means++ initialization added slight computational complexity, but the improvements in clustering accuracy justified the trade-off. Similarly, using the elbow method and silhouette analysis required additional computation, but these methods were crucial in ensuring the optimal number of clusters and the overall quality of the clusters.
+                    </p>
+
+                    <h4><strong>VI. Challenges Faced:</strong></h4>
+                    <ol>
+                        <li><strong>Computational Complexity:</strong>
+                            <p>Implementing K-means++ introduced additional computational steps during initialization, which initially increased the algorithm's running time. However, this was offset by faster convergence, showcasing the need to carefully balance efficiency with accuracy.</p>
+                        </li>
+                        <li><strong>Cluster Evaluation:</strong>
+                            <p>Ensuring that the elbow method and silhouette analysis provided consistent results across different datasets required careful tuning. The challenge was in understanding when clustering patterns were too fine or too broad.</p>
+                        </li>
+                    </ol>
+                    <p>
+                        These improvements, alongside the reflection on the trade-offs and challenges faced, helped solidify my knowledge of machine learning algorithms and their real-world applications. The enhanced artifact demonstrates my proficiency in designing, evaluating, and optimizing machine learning models, which aligns with the course outcomes related to algorithm design, tool utilization, and computing solution development.
+                    </p>
+                </div>
+
+            </div>
+        </section><!-- End K-Means Clustering Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>Vivian Nguyen</h3>
+            <div class="social-links">
+                <a href="https://github.com/hxn6770-2k" class="Github"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/viviannguyen726/" class="Linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 <strong>Vivian Nguyen</strong>. All Rights Reserved.
+            </div>
+            <div class="credits">
+                Designed by <a href="https://example.com">Your Name</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
