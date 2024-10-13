@@ -95,23 +95,23 @@
                             <div class="swiper-wrapper align-items-center">
                                 
                                 <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/Screen 1.png" alt="Screenshot 1">
+                                    <img src="assets/img/portfolio/Screen 1.png" alt="Screenshot 1" style="width: auto; height: 50%;">
                                 </div>
                                 
                                 <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/Screen 2.png" alt="Screenshot 2">
+                                    <img src="assets/img/portfolio/Screen 2.png" alt="Screenshot 2" style="width: auto; height: 50%;>
                                 </div>
                                 
                                 <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/Screen 3.png" alt="Screenshot 3">
+                                    <img src="assets/img/portfolio/Screen 3.png" alt="Screenshot 3" style="width: auto; height: 50%;>
                                 </div>
 
                                  <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/Screen 4.png" alt="Screenshot 3">
+                                    <img src="assets/img/portfolio/Screen 4.png" alt="Screenshot 3" style="width: auto; height: 50%;>
                                 </div>
 
                                  <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/Screen 5.png" alt="Screenshot 3">
+                                    <img src="assets/img/portfolio/Screen 5.png" alt="Screenshot 3" style="width: auto; height: 50%;>
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -170,6 +170,55 @@
                     <p>
                         Through the development of this application, I learned the importance of user feedback in guiding app design. Iterating based on user input has significantly improved the application's usability and functionality. I also enhanced my skills in database management and learned how to write efficient queries for optimal performance.
                     </p>
+
+                    <h4><strong>Code Review and Source Code</strong></h4>
+                        <p>
+                            Below are the links to the code repository and code review discussions for the To-Do List app. These resources offer insights into the improvements made and the thought process behind the development decisions.
+                        </p>
+                        <ul>
+                            <li><a href="https://github.com/hxn6770-2k/my-planner-app" target="_blank"><strong>Source Code Repository (GitHub)</strong></a></li>
+                            <li><a href="https://github.com/hxn6770-2k/my-planner-app/pulls" target="_blank"><strong>Code Review Discussions</strong></a></li>
+                        </ul>
+                    
+                        <h4><strong>Key Code Snippets</strong></h4>
+                        <p>Below are some key code snippets that demonstrate the core functionalities added to the application:</p>
+                        
+                        <h5><strong>1. Task Priority System Implementation</strong></h5>
+                        <pre><code class="language-java">
+                            // Add priority field in Task model
+                            public class Task {
+                                private String title;
+                                private String description;
+                                private Priority priority;
+                                private Date deadline;
+                                
+                                public Task(String title, String description, Priority priority, Date deadline) {
+                                    this.title = title;
+                                    this.description = description;
+                                    this.priority = priority;
+                                    this.deadline = deadline;
+                                }
+                                
+                                // Getters and Setters
+                            }
+                        </code></pre>
+                        
+                        <h5><strong>2. Custom Sorting Algorithm</strong></h5>
+                        <pre><code class="language-java">
+                            // Sorting tasks based on priority and deadline
+                            public List<Task> sortTasks(List<Task> tasks) {
+                                Collections.sort(tasks, (task1, task2) -> {
+                                    // First compare by priority
+                                    int priorityComparison = task1.getPriority().compareTo(task2.getPriority());
+                                    if (priorityComparison != 0) {
+                                        return priorityComparison;
+                                    }
+                                    // If priority is the same, compare by deadline
+                                    return task1.getDeadline().compareTo(task2.getDeadline());
+                                });
+                                return tasks;
+                            }
+                        </code></pre>
                 </div>
 
             </div>
