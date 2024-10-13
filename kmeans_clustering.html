@@ -127,7 +127,7 @@
         
                 <div class="narrative mt-5">
                     <h3><strong>Enhancement Plan</strong></h3>
-        
+                
                     <h4><strong>Justification for Inclusion</strong></h4>
                     <p>
                         I selected this artifact for my ePortfolio because it highlights my ability to apply machine learning algorithms, specifically clustering techniques, to solve real-world data analysis problems. It also demonstrates my understanding of algorithm design, data science, and evaluation techniques. By enhancing the artifact with improved centroid initialization and cluster evaluation methods, I showcase not only my ability to implement computing solutions but also my problem-solving skills in optimizing algorithmic performance.
@@ -139,10 +139,10 @@
                         <li>The elbow method and silhouette analysis highlight my skills in selecting and evaluating optimal cluster counts, enhancing the interpretability of results.</li>
                         <li>These enhancements reflect my expertise in data analysis, optimization of machine learning models, and algorithmic problem-solving.</li>
                     </ul>
-        
+                
                     <h4><strong>How the Artifact Was Improved</strong></h4>
                     <p>
-                        To address the limitations of the original implementation, I made several key enhancements to improve the clustering process's effectiveness and efficiency.
+                        To address the limitations of the original implementation, I made several key enhancements to improve the effectiveness and efficiency of the clustering process.
                     </p>
                     <ol>
                         <li><strong>K-means++ Initialization:</strong>
@@ -150,53 +150,97 @@
                                 <li>I replaced the random initialization of centroids with the K-means++ initialization method. This strategic selection of initial cluster centers reduces the likelihood of poor clustering results and improves algorithm convergence. As a result, the updated artifact now produces more accurate and consistent clusters.</li>
                                 <li>This modification highlights my ability to make algorithmic design decisions that balance the trade-off between computational complexity and clustering performance.</li>
                             </ul>
+                            <p>
+                                Here is the updated code for K-means++ initialization:
+                            </p>
+                            <pre>
+                <code>
+                // Updated code for K-means++ initialization
+                def kmeans_plus_plus_initialization(X, k):
+                    centroids = []
+                    # Randomly choose the first centroid
+                    centroids.append(X[np.random.randint(X.shape[0])])
+                
+                    # Choose remaining k-1 centroids
+                    for _ in range(1, k):
+                        distances = np.min([np.linalg.norm(x - centroid) for centroid in centroids] for x in X)
+                        prob = distances / np.sum(distances)
+                        next_centroid = X[np.argmax(prob)]
+                        centroids.append(next_centroid)
+                    
+                    return np.array(centroids)
+                            </code>
+                            </pre>
                         </li>
                         <li><strong>Elbow Method for Optimal Cluster Selection:</strong>
                             <ul>
                                 <li>I introduced the elbow method to systematically determine the optimal number of clusters (k). The elbow method calculates the within-cluster sum of squares (WCSS) for a range of k values, identifying the point where adding more clusters no longer significantly improves model performance.</li>
                                 <li>This enhancement prevents both overfitting and underfitting, leading to more accurate clustering and effective modeling. It showcases my ability to implement data-driven approaches to enhance the algorithm’s effectiveness.</li>
                             </ul>
+                            <p>
+                                The following code implements the elbow method for optimal cluster selection:
+                            </p>
+                            <pre>
+                <code>
+                # Function to find the optimal number of clusters using the elbow method
+                def find_optimal_k(X, max_k=20):
+                    wss = []
+                    for k in range(1, max_k + 1):
+                        kmeans_result = kmeans_plus_plus_initialization(X, k)
+                        # Calculate WCSS for the k-means result
+                        wss.append(np.sum(np.min([np.linalg.norm(x - centroid) for centroid in kmeans_result], axis=0)**2))
+                    
+                    # Identify the elbow point
+                    elbow_point = np.argmax(np.diff(np.diff(wss))) + 1
+                    return elbow_point
+                            </code>
+                            </pre>
                         </li>
                         <li><strong>Silhouette Analysis for Cluster Evaluation:</strong>
                             <ul>
                                 <li>I integrated silhouette analysis to evaluate the quality of the clusters. Silhouette values provide insights into how well each data point fits within its assigned cluster, compared to neighboring clusters. This helps assess cohesion and separation, improving the interpretability of the clustering outcomes.</li>
                                 <li>This addition demonstrates my ability to use innovative tools to assess and optimize the clustering algorithm's performance, ensuring that it aligns with both computational principles and user needs.</li>
                             </ul>
+                            <p>
+                                Below is the code for silhouette analysis:
+                            </p>
+                            <pre>
+                <code>
+                # Function to evaluate clustering quality using silhouette score
+                def evaluate_clustering(kmeans_result, data):
+                    cluster_assignments = kmeans_result
+                    dist_matrix = np.linalg.norm(data[:, np.newaxis] - data, axis=2)
+                    silhouette_values = np.zeros(len(cluster_assignments))
+                
+                    for i in range(len(cluster_assignments)):
+                        cluster = cluster_assignments[i]
+                        same_cluster_distances = dist_matrix[i, cluster_assignments == cluster]
+                        a = np.mean(same_cluster_distances[same_cluster_distances != 0]) if len(same_cluster_distances) > 1 else 0
+                        b = np.min([np.mean(dist_matrix[i, cluster_assignments == c]) for c in np.unique(cluster_assignments) if c != cluster])
+                        silhouette_values[i] = (b - a) / max(a, b) if max(a, b) > 0 else 0
+                
+                    silhouette = np.mean(silhouette_values)
+                    return silhouette
+                            </code>
+                            </pre>
                         </li>
                     </ol>
-        
-                    <!-- ======= Updated Code Links Section ======= -->
-                    <h4><strong>Code Review and Updated Code</strong></h4>
-                    <p>
-                        The following links provide access to both the code review of this project and the updated code that reflects the enhancements discussed:
-                    </p>
-                    <ul>
-                        <li><a href="https://github.com/username/k-means-clustering-code-review" target="_blank"><strong>Code Review</strong></a>: Review of the original and updated implementation with notes on enhancements and improvements.</li>
-                        <li><a href="https://github.com/username/k-means-clustering-updated" target="_blank"><strong>Updated Code</strong></a>: Access to the complete codebase of the enhanced K-means clustering implementation, including improved centroid initialization, elbow method, and silhouette analysis.</li>
-                    </ul>
-        
-                    <h4><strong>Highlighted Updated Code:</strong></h4>
-                    <pre>
-        <code>
+
+                <!-- ======= Updated Code Links Section ======= -->
+                <h4><strong>Code Review and Updated Code</strong></h4>
+                <p>
+                    The following links provide access to both the code review of this project and the updated code that reflects the enhancements discussed:
+                </p>
+                <ul>
+                    <li><a href="https://github.com/username/k-means-clustering-code-review" target="_blank"><strong>Code Review</strong></a>: Review of the original and updated implementation with notes on enhancements and improvements.</li>
+                    <li><a href="https://github.com/username/k-means-clustering-updated" target="_blank"><strong>Updated Code</strong></a>: Access to the complete codebase of the enhanced K-means clustering implementation, including improved centroid initialization, elbow method, and silhouette analysis.</li>
+                </ul>
             
-        // Updated code for K-means++ initialization
-        def kmeans_plus_plus_initialization(X, k):
-            centroids = []
-            # Randomly choose the first centroid
-            centroids.append(X[np.random.randint(X.shape[0])])
-        
-            # Choose remaining k-1 centroids
-            for _ in range(1, k):
-                distances = np.min([np.linalg.norm(x - centroid) for centroid in centroids] for x in X)
-                prob = distances / np.sum(distances)
-                next_centroid = X[np.argmax(prob)]
-                centroids.append(next_centroid)
-            
-            return np.array(centroids)
-        </code>
-                    </pre>
-                </div>
-        
+                <h4><strong>Conclusion</strong></h4>
+                <p>
+                    With these updates, the K-Means clustering algorithm now operates with greater efficiency and accuracy, aligning the algorithm's outcomes with data-driven insights and ensuring robust and interpretable results for end users. These enhancements reflect my ongoing commitment to improving data analysis techniques and demonstrating my ability to tackle complex data challenges effectively.
+                </p>
+       
                 <h4><strong>Meeting the Course Outcomes</strong></h4>
                 <p>
                     These enhancements allowed me to successfully align the artifact with several course outcomes:
