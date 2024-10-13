@@ -155,20 +155,8 @@
                             <pre>
                 <code>
                 // Updated code for K-means++ initialization
-                def kmeans_plus_plus_initialization(X, k):
-                    centroids = []
-                    # Randomly choose the first centroid
-                    centroids.append(X[np.random.randint(X.shape[0])])
-                
-                    # Choose remaining k-1 centroids
-                    for _ in range(1, k):
-                        distances = np.min([np.linalg.norm(x - centroid) for centroid in centroids] for x in X)
-                        prob = distances / np.sum(distances)
-                        next_centroid = X[np.argmax(prob)]
-                        centroids.append(next_centroid)
-                    
-                    return np.array(centroids)
-                            </code>
+                kmeans_result <- kmeans(interests, centers = k, algorithm = "MacQueen", iter.max = 100, nstart = 25)
+                </code>
                             </pre>
                         </li>
                         <li><strong>Elbow Method for Optimal Cluster Selection:</strong>
@@ -182,17 +170,21 @@
                             <pre>
                 <code>
                 # Function to find the optimal number of clusters using the elbow method
-                def find_optimal_k(X, max_k=20):
-                    wss = []
-                    for k in range(1, max_k + 1):
-                        kmeans_result = kmeans_plus_plus_initialization(X, k)
-                        # Calculate WCSS for the k-means result
-                        wss.append(np.sum(np.min([np.linalg.norm(x - centroid) for centroid in kmeans_result], axis=0)**2))
-                    
-                    # Identify the elbow point
-                    elbow_point = np.argmax(np.diff(np.diff(wss))) + 1
-                    return elbow_point
-                            </code>
+               find_optimal_k <- function(interests, max_k = 20) {
+                  # Calculate WCSS for different values of k
+                  wss <- numeric(max_k)
+                  
+                  for (k in 1:max_k) {
+                    kmeans_result <- kmeans(interests, centers = k, nstart = 25)
+                    wss[k] <- kmeans_result$tot.withinss
+                  }
+                  
+                  # Find the elbow point (sharp decrease in WCSS)
+                  elbow_point <- which.max(diff(diff(wss))) + 1
+                  
+                  return(elbow_point)
+                }
+                </code>
                             </pre>
                         </li>
                         <li><strong>Silhouette Analysis for Cluster Evaluation:</strong>
@@ -206,21 +198,28 @@
                             <pre>
                 <code>
                 # Function to evaluate clustering quality using silhouette score
-                def evaluate_clustering(kmeans_result, data):
-                    cluster_assignments = kmeans_result
-                    dist_matrix = np.linalg.norm(data[:, np.newaxis] - data, axis=2)
-                    silhouette_values = np.zeros(len(cluster_assignments))
-                
-                    for i in range(len(cluster_assignments)):
-                        cluster = cluster_assignments[i]
-                        same_cluster_distances = dist_matrix[i, cluster_assignments == cluster]
-                        a = np.mean(same_cluster_distances[same_cluster_distances != 0]) if len(same_cluster_distances) > 1 else 0
-                        b = np.min([np.mean(dist_matrix[i, cluster_assignments == c]) for c in np.unique(cluster_assignments) if c != cluster])
-                        silhouette_values[i] = (b - a) / max(a, b) if max(a, b) > 0 else 0
-                
-                    silhouette = np.mean(silhouette_values)
-                    return silhouette
-                            </code>
+                evaluate_clustering <- function(kmeans_result, data, participant_index) {
+                  cluster_assignments <- kmeans_result$cluster
+                  dist_matrix <- dist(data)
+                  dist_matrix_square <- as.matrix(dist_matrix)
+                  silhouette_values <- numeric(length(cluster_assignments))
+                  
+                  for (i in 1:length(cluster_assignments)) {
+                    cluster <- cluster_assignments[i]
+                    same_cluster_distances <- dist_matrix_square[i, cluster_assignments == cluster & seq_along(cluster_assignments) != i]
+                    a <- if (length(same_cluster_distances) > 0) mean(same_cluster_distances) else 0
+                    b <- min(sapply(unique(cluster_assignments), function(c) {
+                      if (c != cluster) mean(dist_matrix_square[i, cluster_assignments == c]) else Inf
+                    }))
+                    silhouette_values[i] <- if (max(a, b) > 0) (b - a) / max(a, b) else 0
+                  }
+                  
+                  silhouette <- mean(silhouette_values, na.rm = TRUE)
+                  wcss <- kmeans_result$tot.withinss
+                  
+                  return(list(participant_index = participant_index, silhouette = silhouette, wcss = wcss))
+                }
+                </code>
                             </pre>
                         </li>
                     </ol>
