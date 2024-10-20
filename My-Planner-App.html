@@ -122,15 +122,15 @@
                         <div class="portfolio-info">
                             <h3><strong>Project Information</strong></h3>
                             <ul>
-                                <li><strong>Category</strong>: School Project</li>
-                                <li><strong>Client</strong>: Mobile Architecture and Programming course</li>
+                                <li><strong>Category</strong>: Southern New Hamsphire University</li>
+                                <li><strong>Client</strong>: Mobile Architecture and Programming Course</li>
                                 <li><strong>Project date</strong>: October 10, 2024</li>
                             </ul>
                         </div>
                         <div class="portfolio-description">
-                            <h2><strong>My Planner App</strong></h2>
+                            <h2><strong>To Do List App</strong></h2>
                             <p>
-                                The artifact I selected is the To-Do List App, an Android application developed to help users manage tasks efficiently. Originally created as part of a Mobile Architecture and Programming course, the app offers task management features such as adding, viewing, and clearing tasks, with a user-friendly design that enhances the user experience. This artifact demonstrates my ability to combine backend functionality with frontend design, emphasizing modular code architecture.
+                                The artifact I have selected is the To-Do List Application, originally developed for a Mobile Architecture and Programming course. It is an Android app designed to help users manage tasks efficiently, with features like adding, viewing, and clearing tasks. In this enhancement, I focused on integrating a task priority system and improving the task sorting functionality by connecting the app to a database. The database now supports sorting tasks by both priority and deadline, resulting in a more robust and flexible task management system. The enhancements prioritize algorithmic efficiency and database optimization, ensuring that the application can handle growing data while maintaining responsiveness.
                             </p>
                         </div>
                     </div>
@@ -140,111 +140,154 @@
                 <!-- ======= Narrative Section ======= -->
                 <div class="narrative mt-5">
                     <h3><strong>Enhancement Plan</strong></h3>
-                    
+
+                    <!-- ======= Justification Section ======= -->
                     <h4><strong>Justification for Inclusion</strong></h4>
                     <p>
-                        I included this artifact in my ePortfolio because it reflects my skills in algorithm design, data structures, and user interface development. By enhancing the app to include task priority and sorting algorithms, it provides a solid example of my ability to apply algorithmic principles to solve real-world problems, such as organizing tasks efficiently. The addition of these functionalities showcases my ability to handle data structures, particularly the manipulation and sorting of task data based on various attributes (like priority and due date). This artifact satisfies <strong>Category Two and Three: Algorithms - Data Structures and Database</strong>.
+                        I included this artifact in my ePortfolio because it highlights my ability to work with both <strong>Category 2: Algorithms and Data Structures</strong> and <strong>Category 3: Databases</strong>. By adding a priority system, sorting tasks based on deadlines, and connecting these updates to a database, I demonstrate my proficiency in both backend development and data management. These enhancements also showcase my ability to apply algorithmic principles to optimize task organization and ensure efficient data handling.
                     </p>
                     <ul>
                         <li><strong>Specific Components:</strong></li>
-                        <li>The task priority system demonstrates my skills in sorting algorithms.</li>
-                        <li>The enhanced user interface reflects my ability to design interactive and intuitive user experiences.</li>
-                        <li>The integration of Android SDK and Java shows proficiency in mobile app development.</li>
+                        <li>Task Priority and Deadline Sorting Algorithms: Emphasize my understanding of algorithm development, particularly in optimizing sorting with respect to time complexity (O(n log n)) and ensuring scalability.</li>
+                        <li>Database Integration: Reflects my ability to design and optimize a scalable backend system, ensuring that task data is handled efficiently across sessions.</li>
+                        <li>UI/UX Design: Demonstrates my skills in improving user experience by ensuring seamless interaction between the frontend and backend, particularly when handling dynamic data.</li>
                     </ul>
 
+                    <!-- ======= Change Description Section ======= -->
                     <h4><strong>How the Artifact Was Improved</strong></h4>
                     <p>
                         Several key enhancements were made to the application, focusing on integrating a task priority system, implementing a custom sorting algorithm, and connecting the app to a database. These improvements provide a more robust and flexible task management system.
                     </p>
                     <ul>
-                        <li><strong>Key Enhancements:</strong></li>
-                        <li><strong>1. Database Integration for Task Storage:</strong> I connected the application to a database, updating the task model to include fields for priority and deadline. This allows for efficient CRUD operations (Create, Read, Update, Delete) and supports dynamic task management.</li>
-                        <li><strong>2. Task Priority System:</strong> Added a priority field to each task, enabling users to assign High, Medium, or Low priority. This was implemented through modifications in the task data model.</li>
-                        <pre><code class="language-java">
-                            // Add priority field in Task model
-                            public class Task {
-                                private String title;
-                                private String description;
-                                private Priority priority;
-                                private Date deadline;
-                                
-                                public Task(String title, String description, Priority priority, Date deadline) {
-                                    this.title = title;
-                                    this.description = description;
-                                    this.priority = priority;
-                                    this.deadline = deadline;
-                                }
-                                
-                                // Getters and Setters
-                            }
-                        </code></pre>
+                        <li><strong>1. Database Integration for Task Storage:</strong>
+                            <ul>
+                                <li>The application was connected to a SQLite database, updating the task model to include fields for priority and deadline. This enabled efficient CRUD operations (Create, Read, Update, Delete) for tasks, ensuring that the app can manage task data persistently across sessions.</li>
+                                <li>By storing both priority and deadline in the database, I improved the app's ability to manage tasks dynamically, ensuring efficient data storage, retrieval, and manipulation. The database queries were optimized to reduce the time complexity of data operations (e.g., retrieval or updates), ensuring minimal latency during task management.</li>
+                                <li>Optimization: Efficient use of indexed columns for priority and deadlines minimized retrieval time, ensuring that the sorting of tasks by these fields was not bottlenecked by slow database queries.</li>
+                            </ul>
+                        </li>
                         
-                        <li><strong>3. Custom Sorting Algorithm:</strong> Developed a sorting algorithm to prioritize tasks based on user-defined criteria, allowing tasks to be sorted by deadline and priority level.</li>
-                        <pre><code class="language-java">
-                            // Sorting tasks based on priority and deadline
-                            public List<Task> sortTasks(List<Task> tasks) {
-                                Collections.sort(tasks, (task1, task2) -> {
-                                    // First compare by priority
-                                    int priorityComparison = task1.getPriority().compareTo(task2.getPriority());
-                                    if (priorityComparison != 0) {
-                                        return priorityComparison;
+                        <li><strong>2. Task Sorting by Deadline and Priority:</strong> 
+                            <ul>
+                                <li>I developed a custom sorting algorithm that orders tasks by priority (High, Medium, Low) and deadline (earliest due first). The algorithm was designed with a time complexity of O(n log n) (using a hybrid of Merge Sort and database indexing), which ensures that sorting remains efficient even as the number of tasks increases.</li>
+                                <li>The sorting logic was dynamically linked to the database, so tasks are automatically sorted based on the latest information stored in the database. This tight integration ensures that changes in task data—whether priority or deadline—are reflected immediately in the task display without any noticeable delay.</li>
+                                <li>Algorithmic Complexity: Sorting tasks involves using a stable sort to maintain order, and its O(n log n) efficiency ensures scalability as the number of tasks grows.</li>
+                            </ul>
+                            <p>
+                                Here is the updated code for adding a priority field to each task, enabling users to assign <strong>High, Medium, Low</strong> priority. This was implemented through modifications in the task data model.
+                            </p>
+                            <pre><code class="language-java">
+                                // Add priority field in Task model
+                                public class Task {
+                                    private String title;
+                                    private String description;
+                                    private Priority priority;
+                                    private Date deadline;
+                                    
+                                    public Task(String title, String description, Priority priority, Date deadline) {
+                                        this.title = title;
+                                        this.description = description;
+                                        this.priority = priority;
+                                        this.deadline = deadline;
                                     }
-                                    // If priority is the same, compare by deadline
-                                    return task1.getDeadline().compareTo(task2.getDeadline());
-                                });
-                                return tasks;
-                            }
-                        </code></pre>
+                                    
+                                    // Getters and Setters
+                                }
+                            </code></pre>
+
+                            <p>
+                                Developed a sorting algorithm to prioritize tasks based on user-defined criteria, allowing tasks to be sorted by deadline and priority level.
+                            </p>
+                            <pre><code class="language-java">
+                                // Sorting tasks based on priority and deadline
+                                public List<Task> sortTasks(List<Task> tasks) {
+                                    Collections.sort(tasks, (task1, task2) -> {
+                                        // First compare by priority
+                                        int priorityComparison = task1.getPriority().compareTo(task2.getPriority());
+                                        if (priorityComparison != 0) {
+                                            return priorityComparison;
+                                        }
+                                        // If priority is the same, compare by deadline
+                                        return task1.getDeadline().compareTo(task2.getDeadline());
+                                    });
+                                    return tasks;
+                                }
+                            </code></pre>
+                        </li>
+
+                         <li><strong>3.	UI Enhancements:</strong>
+                            <ul>
+                                <li>I updated the user interface (UI) to allow users to input both task priority and deadline when creating or editing tasks. This intuitive design ensures that users can interact easily with the new features while maintaining clear task organization.</li>
+                                <li>I also improved the task list view to display tasks in the correct order (based on priority and deadline), providing users with a visual representation of which tasks are most critical or time-sensitive. The UI remains responsive due to the efficient algorithmic design of the backend, ensuring smooth sorting even when managing large task lists.</li>
+                            </ul>
+                        </li>
+                        
                     </ul>
-                    <p>
-                        Each enhancement was tested thoroughly to ensure performance and reliability, leading to an application that not only meets user needs but also demonstrates my proficiency in software development practices.
-                    </p>
 
-                    <h4><strong>Lessons Learned</strong></h4>
+                    <!-- ======= Updated Code Links Section ======= -->
+                    <h4><strong>Code Review and Updated Code</strong></h4>
                     <p>
-                        Through the development of this application, I learned the importance of user feedback in guiding app design. Iterating based on user input has significantly improved the application's usability and functionality. I also enhanced my skills in database management and learned how to write efficient queries for optimal performance.
+                        The following links provide access to both the code review of this project and the originial and updated code that reflects the enhancements discussed:
                     </p>
+                    <ul>
+                        <li><a href="https://youtu.be/Id3EmsewGhw" target="_blank"><strong>Code Review</strong></a>: Review of the original and updated implementation with notes on enhancements and improvements.</li>
+                        <li><a href="https://github.com/hxn6770-2k/MyPlannerApp" target="_blank"><strong>Original Code</strong></strong></a>Access to the original codebase of To Do List App</li>
+                        <li><a href="https://github.com/hxn6770-2k/MyPlannerApp/tree/Update_version" target="_blank"><strong>Updated Code</strong></a>Access to the complete codebase of the enhanced To Do List App</li>
+                    </ul>
+            
+                     <!-- ======= Course Outcomes Evaluation ======= -->   
+                     <h4><strong>Meeting the Course Outcomes</strong></h4>
+                    <p>These enhancements allowed me to successfully align the artifact with several course outcomes:</p>
+                    <ol>
+                        <li>
+                            <strong>Outcome 1: Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.</strong>
+                            <p>
+                                By enhancing the task model and integrating new features like priority sorting and deadline tracking, I demonstrated collaboration with modern design principles and software engineering practices. These changes reflect a holistic approach to improving both front-end and back-end functionality, focusing on how tasks are managed, stored, and displayed to the user. 
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Outcome 2: Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.</strong>
+                            <p>
+                                The updated database schema and task sorting logic are clearly presented through well-documented code and thorough explanations. This makes it easy for both users and developers to understand the changes. The documentation includes details on algorithmic time complexity (O(n log n) for task sorting) and database performance optimizations, demonstrating my ability to communicate complex technical concepts effectively.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Outcome 3: Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards, while managing trade-offs in design choices.</strong>
+                            <p>
+                                The sorting algorithm based on both priority and deadlines showcases my application of algorithmic principles. By using a stable sorting algorithm with a time complexity of O(n log n), I ensured that tasks could be organized efficiently without impacting performance. This efficient sorting ensures that users can organize their tasks in a way that optimizes productivity and task visibility. The algorithm was chosen for its scalability and real-time performance.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Outcome 4: Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices to implement solutions that deliver value and accomplish industry-specific goals.</strong>
+                            <p>
+                                The integration of the Android SDK, Java, and SQLite database systems demonstrates my proficiency in using advanced development tools. I effectively handled data manipulation, storage, and retrieval, while maintaining performance and scalability by ensuring that CRUD operations were optimized for large datasets. The combination of algorithmic logic and database indexing helped maintain low latency, even with growing task lists.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Outcome 5: Develop a security mindset that anticipates adversarial exploits in software architecture and designs, mitigating design flaws, and ensuring data privacy and security.</strong>
+                            <p>
+                                By enhancing the database schema and improving CRUD operations, I mitigated risks associated with poor data management. The updated design ensures that tasks are stored reliably and sorted efficiently, which makes the application more robust and user-friendly. By carefully handling database transactions and ensuring proper indexing, I reduced the likelihood of slow queries or data corruption, thus improving the app's resilience to growing user data.
+                            </p>
+                        </li>
+                    </ol>
 
-                    <h4><strong>Code Review and Source Code</strong></h4>
-                        <p>
-                            Below are the links to the code repository and code review discussions for the To-Do List app. These resources offer insights into the improvements made and the thought process behind the development decisions.
-                        </p>
-                        <ul>
-                            <li><a href="https://youtu.be/Id3EmsewGhw" target="_blank"><strong>Code Review</strong></a></li>
-                            <li><a href="https://github.com/hxn6770-2k/MyPlannerApp/tree/Update_version" target="_blank"><strong>Source Code Repository (GitHub)</strong></a></li>
-                        </ul>
+                    <!-- ======= Reflection Section ======= -->
+                    <h4><strong>Reflection</strong></h4>
+                    <p>
+                        This enhancement process was an invaluable learning experience. Integrating the database with the updated task model and sorting logic allowed me to explore new dimensions of backend development. One major insight I gained was the relationship between data structures, algorithms, and user experience—ensuring that database operations were both efficient and aligned with user needs.
+                    </p>                    
+                    <p>
+                        Updating the database schema to accommodate new fields (task priority and deadline) required careful planning to preserve existing data and ensure that future CRUD operations could be performed efficiently. I optimized the data retrieval process by using indexed columns for priority and deadline, which allowed for faster task sorting and minimal impact on app performance.
+                    </p>
+                    <p>
+                        Through these enhancements, I deepened my understanding of how databases, algorithms, and UI design interact to create a well-rounded, functional application. The improvements I made ensure that the app is not only more efficient in managing tasks but also offers a seamless user experience. This process solidified my ability to design and implement scalable and robust solutions in mobile development, aligning with course outcomes related to software design, data management, and algorithmic problem-solving.
+                    </p>
                     
-                        <h4><strong>Meeting the Course Outcomes</strong></h4>
-                        <p>
-                            These enhancements allowed me to successfully align the artifact with several course outcomes:
-                        </p>
-                        <ol>
-                            <li><strong>Outcome 1: Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.</strong>
-                                <p>
-                                    I’ve demonstrated collaboration by working through a systematic enhancement of the task model, showing how to improve and integrate new features. This collaboration involved feedback from diverse stakeholders, enabling better decision-making aligned with user needs.
-                                </p>
-                            </li>
-                            <li><strong>Outcome 2: Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.</strong>
-                                <p>
-                                    I’ve presented technical concepts clearly through updated code examples and explanations, making it easier to understand the changes in the schema and operations. The communication was tailored to various audience levels, ensuring clarity for both technical and non-technical stakeholders.
-                                </p>
-                            </li>
-                            <li><strong>Outcome 3: Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.</strong>
-                                <p>
-                                    I’ve applied algorithmic principles to enhance the task management system, improving how tasks are tracked and filtered based on new schema fields. These enhancements were evaluated based on their effectiveness in solving real-world challenges while carefully managing trade-offs such as performance and scalability.
-                                </p>
-                            </li>
-                            <li><strong>Outcome 4: Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.</strong>
-                                <p>
-                                    I’ve utilized advanced tools and techniques (such as Java for database interactions) to implement these solutions effectively. These innovations directly contribute to achieving industry-specific goals, such as improved efficiency and enhanced user experience.
-                                </p>
-                            </li>
-                            <li><strong>Outcome 5: Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.</strong>
-                                <p>
-                                    By enhancing the database schema and CRUD operations, we’ve mitigated risks in software design by improving data management and task tracking, making the application more robust and user-friendly. Additionally, these changes address potential security vulnerabilities, ensuring the integrity and privacy of user data.
-                                </p>
-                            </li>
-                        </ol>
+                    <h5>Key Learning:</h5>
+                    <p>
+                        •	The importance of balancing time complexity and database optimization became clear during this process. By choosing efficient sorting algorithms and optimizing database queries, I ensured that the app remains performant and scalable, even with a growing number of tasks.
+                    </p>
+
                 </div>
 
             </div>
